@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { AppDataSource } from './data/postgres/postgres-database';
+import { AppDataSource } from './data';
 import { Server } from './presentation/server';
 import { AppRoutes } from './presentation/routes';
 
