@@ -38,7 +38,7 @@ export class RepairsController {
     .catch((error: any) => this.handleError(error, res) )
   };
 
-  updateVideogamesByid = (req: Request, res: Response): void => {
+  updateRepairsByid = (req: Request, res: Response): void => {
     const { id } = req.params;
     const [error, updateRepairsDto] = UpdateRepairsDto.create(req.body);
   
