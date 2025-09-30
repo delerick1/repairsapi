@@ -1,5 +1,5 @@
 import { Router } from 'express';
-//import {VideogamesRoutes} from './videogames/routes'
+import { RepairsRoutes } from './repairs/routes';
 
 export class AppRoutes {
   // STATIC 
@@ -7,9 +7,9 @@ export class AppRoutes {
     const router = Router();
 
     router.use('/api/v1/repairs', RepairsRoutes.routes);
-    //* aca tambien iran todos los metodos que necesitamos para gestionar los repairs
+    //* aca tambien iran todos los metodos que necesitamos para gestionar los videojuegos
 
-    //* aca tambien iran todos los metodos que necesitamos para gestionar los los users
+    //* aca tambien iran todos los metodos que necesitamos para gestionar los los usuarios
 
     //* aca tambien iran todos los metodos que necesitamos para gestionar los los purchases
 
