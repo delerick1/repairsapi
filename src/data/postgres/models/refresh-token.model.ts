@@ -19,7 +19,7 @@ export class RefreshToken extends BaseEntity {
 
   @Column({
     nullable: false,
-    type: 'timestamp',
+    type: 'datetime',
   })
   expires_at: Date;
 
