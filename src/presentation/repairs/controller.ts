@@ -16,7 +16,10 @@ export class RepairsController {
     }
   createRepairs = (req: Request, res: Response): void => {
    const[error, createRepairsDto] = CreateRepairsDto.create(req.body)
-   if(error) res.status(422).json({message:error})
+   if(error) {
+     res.status(422).json({message:error});
+     return;
+   }
 
     this.repairsService.createRepairs(createRepairsDto!)
     .then(repairs => res.status(201).json(repairs))
@@ -31,7 +34,8 @@ export class RepairsController {
   getRepairsByid = (req: Request, res: Response) => {
     const {id} = req.params
     if(isNaN(+id)){
-      res.status(400).json({message:'Enter a number'})
+      res.status(400).json({message:'Enter a number'});
+      return;
     }
     this.repairsService.findOneRepairsById(+id)
     .then(repairs => res.status(200).json(repairs))
@@ -43,7 +47,8 @@ export class RepairsController {
     const [error, updateRepairsDto] = UpdateRepairsDto.create(req.body);
   
     if(isNaN(+id)){
-    res.status(400).json({message: `Enter a number`});
+      res.status(400).json({message: `Enter a number`});
+      return;
     }
     
     this.repairsService.updateRepairs(updateRepairsDto!,+id)
@@ -54,7 +59,8 @@ export class RepairsController {
   deleteRepairsByid = (req: Request, res: Response): void => {
     const { id } = req.params;
     if(isNaN(+id)){
-     res.status(400).json( {message:'ID not a Number'});
+      res.status(400).json( {message:'ID not a Number'});
+      return;
     }   
     this.repairsService.deleteRepairs(+id)
     .then(() => res.status(204).json())

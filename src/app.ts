@@ -1,11 +1,25 @@
-import express, { Request, Response } from "express";
+import 'reflect-metadata';
+import { AppDataSource } from './data/postgres/postgres-database';
+import { Server } from './presentation/server';
+import { AppRoutes } from './presentation/routes';
 
-const app = express();
+async function main() {
+  try {
+    // Initialize database connection
+    await AppDataSource.initialize();
+    console.log('✅ Database connected successfully');
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World desde TypeScript 🚀");
-});
+    // Start server
+    const server = new Server({
+      port: 3000,
+      routes: AppRoutes.routes
+    });
 
-app.listen(3000, () => {
-  console.log("Servidor corriendo en http://localhost:3000");
-});
+    await server.start();
+  } catch (error) {
+    console.error('❌ Error starting application:', error);
+    process.exit(1);
+  }
+}
+
+main();

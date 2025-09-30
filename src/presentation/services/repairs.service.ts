@@ -54,7 +54,7 @@ export class RepairsService {
       throw CustomError.InternalServer("🧨🧨Somenthing went very wrong 🧨🧨 ")   
      }
   }
-  async deleteVideogame(id: number) {
+  async deleteRepairs(id: number) {
     const repairs = await this.findOneRepairsById(id)
     repairs.status = Status.INACTIVE //soft delete
     // repairs.remove() delete permanate
